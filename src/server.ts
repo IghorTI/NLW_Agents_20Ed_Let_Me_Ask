@@ -22,8 +22,4 @@ app.get('/health', () => {
     return { status: 'Ok!' }
 })
 
-app.listen({
-    port: env.PORT,
-}).then(() => {
-    console.log('HTTP server running on http://localhost:3333')
-})
+app.listen({port: env.PORT})
