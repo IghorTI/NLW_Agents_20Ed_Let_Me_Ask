@@ -10,6 +10,8 @@ import {
 import { fastifyCors } from '@fastify/cors';
 import { env } from './env.ts';
 import { getRoomsRoute } from './http/routes/get-rooms.ts';
+import { createRoomsRoute } from './http/routes/create-rooms.ts';
+import { getRoomsQuestions } from './http/routes/get-room-questions.ts';
 
 
 const app = fastify()
@@ -27,6 +29,10 @@ app.get('/health', () => {
 })
 
 app.register(getRoomsRoute);
+app.register(createRoomsRoute);
+app.register(getRoomsQuestions);
+
+
 
 
 app.listen({port: env.PORT})

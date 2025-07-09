@@ -47,6 +47,7 @@ npx ultracite init
 npm i postgres
 npm i drizzle-orm
 npm i drizzle-kit -D
+npm i drizzle-seed -D
 
 # Referências
 https://hub.docker.com/r/pgvector/pgvector
@@ -57,4 +58,10 @@ https://hub.docker.com/r/pgvector/pgvector
 - npx drizzle-kit generate
 - npx drizzle-kit migrate
 - npx drizzle-kit studio
-- npm drizzle-seed -D
+- npm run db:seed
+
+
+## Database reference
+
+- Drizzle Seed 
+- https://orm.drizzle.team/docs/seed-overview
