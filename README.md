@@ -45,7 +45,16 @@ npm i fastify @fastify/cors fastify-type-provider-zod zod
 npm i @biomejs/biome -D
 npx ultracite init
 npm i postgres
+npm i drizzle-orm
+npm i drizzle-kit -D
 
 # Referências
 https://hub.docker.com/r/pgvector/pgvector
 
+
+## Database commands 
+
+- npx drizzle-kit generate
+- npx drizzle-kit migrate
+- npx drizzle-kit studio
+- npm drizzle-seed -D
