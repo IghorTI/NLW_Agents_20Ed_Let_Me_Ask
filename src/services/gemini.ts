@@ -8,14 +8,14 @@ const gemini = new GoogleGenAI({
 const model = 'gemini-2.5-flash'
 
 export async function transcribeAudio(audioAsBase64: string, mimeType: string){
-    
+
     const response = await gemini.models.generateContent({
         model,
         contents: [
             {
                 text: 'Transcreva o audio para português do Brasil. Seja preciso e natural na transcrição.Mantenha a pontuação adequada e divida o texto em parágrafos quando for apropriado.'
             },{
-                inlineDate:{
+                inlineData:{
                     mimeType,
                     data: audioAsBase64
                 }
@@ -24,10 +24,28 @@ export async function transcribeAudio(audioAsBase64: string, mimeType: string){
     })
 
     if(!response.text){
-        throw new Error "Não foi possível converter o áudio."
+        throw new Error("Não foi possível converter o áudio.")
     }
 
     return response.text
 
 
 }
+
+export async function generateEmbeddings(text:string){
+
+    const response = await gemini.models.embedContent({
+        model: 'text-embedding-004',
+        contents: [{text}],
+        config:{
+            taskType: 'RETRIEVAL_DOCUMENT'
+        }
+    })
+
+    if(!response.embeddings?.[0].values){
+        throw new Error("Não foi possível gerar os embeddings.")
+    }
+
+    return response.embeddings[0].values;
+}
+
