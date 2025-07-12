@@ -3,6 +3,7 @@ import { z } from 'zod/v4';
 import { db } from '../../db/connection.ts';
 import { schema } from '../../db/schema/index.ts';
 import { generateEmbeddings, transcribeAudio } from '../../services/gemini.ts';
+import { questions } from '../../db/schema/questions.ts';
 
 export const uploadAudioRoute: FastifyPluginCallbackZod = (app) => {
  
@@ -35,6 +36,8 @@ export const uploadAudioRoute: FastifyPluginCallbackZod = (app) => {
 
        const transcription = await transcribeAudio(audioAsBase64,audio.mimetype)
        const embeddings = await generateEmbeddings(transcription)
+
+       
 
        const result = await db.insert(schema.audioChunks).values({
         roomId,

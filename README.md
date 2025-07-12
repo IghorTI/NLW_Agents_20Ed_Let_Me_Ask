@@ -49,6 +49,7 @@ npm i drizzle-orm
 npm i drizzle-kit -D
 npm i drizzle-seed -D
 npm i @fastify/multipart
+npm i @google/genai
 
 # Referências
 https://hub.docker.com/r/pgvector/pgvector
