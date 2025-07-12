@@ -8,11 +8,13 @@ import {
 } from 'fastify-type-provider-zod'
 
 import { fastifyCors } from '@fastify/cors';
+import { fastifyMultipart } from '@fastify/multipart';
 import { env } from './env.ts';
 import { getRoomsRoute } from './http/routes/get-rooms.ts';
 import { createRoomsRoute } from './http/routes/create-rooms.ts';
 import { getRoomsQuestions } from './http/routes/get-room-questions.ts';
 import { createQuestionRoute } from './http/routes/create-question.ts';
+import { uploadAudioRoute } from './http/routes/upload-audio.ts';
 
 
 const app = fastify()
@@ -21,6 +23,8 @@ const app = fastify()
 app.register(fastifyCors, {
     origin: "http://localhost:5173",
 })
+
+app.register(fastifyMultipart)
 
 app.setSerializerCompiler(serializerCompiler)
 app.setValidatorCompiler(validatorCompiler)
@@ -33,6 +37,7 @@ app.register(getRoomsRoute);
 app.register(createRoomsRoute);
 app.register(getRoomsQuestions);
 app.register(createQuestionRoute);
+app.register(uploadAudioRoute);
 
 
 
