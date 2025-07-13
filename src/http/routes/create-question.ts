@@ -22,7 +22,7 @@ export const createQuestionRoute: FastifyPluginCallbackZod = (app) => {
 
       console.log("Creating a new question...");
 
-       const { roomId } = request.params;
+      const { roomId } = request.params;
       const { question } = request.body;
 
       const embeddings = await generateEmbeddings(question);
