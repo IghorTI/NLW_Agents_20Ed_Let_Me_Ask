@@ -1,69 +1,46 @@
-# Dependências: 
+# NLW Agents 20 Ed
 
-npm i typescript @types/node -D
-npx tsc --init
-https://github.com/tsconfig/bases?tab=readme-ov-file
+O NLW foi um treinamento de desenvolvimento fornecido pela Rocketseat. O objetivo do projeto **Let Me Ask** é criar salas de perguntas, mas quando um usuário fizer uma perguntar utilizar IA (Gemini) para tentar prever a resposta baseada no banco de dados existente. O projeto também possui um sistema de gravação, em que o usuário utiliza para gravar possíveis repostas no banco de dados. 
 
+# Installation
 
-## 1 - Configuração
+Abaixo são os passos necessários para executar o projeto localmente. 
 
-tsconfig.json:
+1) npm install --no -optional
 
-{
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "_version": "22.0.0",
+> Todas as dependências necessárias serão instaladas; 
 
-  "compilerOptions": {
-    "lib": ["es2024", "ESNext.Array", "ESNext.Collection", "ESNext.Iterator"],
-    "module": "nodenext",
-    "target": "es2022",
+2) docker compose up -d
 
-    "noEmit": true,
-    "allowImportingTsExtensions": true,
+> Irá iniciar os serviços definidos no arquivo docket.compose.yml. 
 
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "moduleResolution": "node16"
-  }
-}
+3) npm run db:generate
 
-## 2 - Configuração
+> Irá gerar os scripts para criação do banco de dados.
+> Obs: O comando acima é um atalho criado no package.json --> "db:generate": "drizzle-kit generate"
 
-package.json
-+add linha: 
+4) npm run db:migrate
 
->"type":"module",
-> "scripts": {
->    "dev": "node --experimental-strip-types src/server.ts"
->  }
+> Irá executar os migrations para criação das tabelas do banco de dados
+Obs: O comando acima é um atalho criado no package.json --> "db:migrate": "drizzle-kit migrate"
 
+5) npm run db:seed
 
-## Dependências:
+> Irá popular o banco de dados com os dadas fictícios. Esse comando é fundamental para quando rodar o frontend ele tenha dados para serem mostrados em tela. 
 
-npm i fastify @fastify/cors fastify-type-provider-zod zod
-npm i @biomejs/biome -D
-npx ultracite init
-npm i postgres
-npm i drizzle-orm
-npm i drizzle-kit -D
-npm i drizzle-seed -D
-npm i @fastify/multipart
-npm i @google/genai
+6) Pare a execução do servidor 
 
-# Referências
-https://hub.docker.com/r/pgvector/pgvector
+7) Crie o arquivo .env
+> Utilize o arquivo .env.example como exemplo 
+
+8) Gere uma API Key do Gemini 
+
+> https://aistudio.google.com/apikey
+
+9) Adicione a chave no arquivo .env
+
+10) npm run dev
+
+> O servidor será iniciado. Para realizar os testes basta utilizar o arquivo client.http ou executar o front.
 
 
-## Database commands 
-
-- npx drizzle-kit generate
-- npx drizzle-kit migrate
-- npx drizzle-kit studio
-- npm run db:seed
-
-
-## Database reference
-
-- Drizzle Seed 
-- https://orm.drizzle.team/docs/seed-overview
