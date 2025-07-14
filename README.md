@@ -1,4 +1,4 @@
-# NLW Agents 20 Ed
+# NLW Agents 20 Ed - Backend
 
 O NLW foi um treinamento de desenvolvimento fornecido pela Rocketseat. O objetivo do projeto **Let Me Ask** é criar salas de perguntas, mas quando um usuário fizer uma perguntar utilizar IA (Gemini) para tentar prever a resposta baseada no banco de dados existente. O projeto também possui um sistema de gravação, em que o usuário utiliza para gravar possíveis repostas no banco de dados. Esse foi o projeto de backend.
 
