@@ -42,5 +42,8 @@ Obs: O comando acima é um atalho criado no package.json --> "db:migrate": "driz
 10) npm run dev
 
 > O servidor será iniciado. Para realizar os testes basta utilizar o arquivo client.http ou executar o front.
+> Para utilizar o client.http é necessário ter a extensão REST Client instalada no VS Code
+> https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
 
 
